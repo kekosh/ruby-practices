@@ -3,7 +3,6 @@
 require 'date'
 require 'optparse'
 
-
 begin
   # コマンドラインオプションを取得する
   # 年、または月が指定されていない場合は本日時点の情報を利用する
@@ -13,7 +12,9 @@ begin
   month = params['m'].nil? ? Date.today.month : params['m'].to_i
 
   # 月には1から12までのみ指定可能とする
-  raise StandardError.new("-m option must between 1 and 12. ")
+  if month < 1  or month > 12
+    raise StandardError.new("-m option must between 1 and 12. ")
+  end
 rescue => e
   puts e.message
   exit
