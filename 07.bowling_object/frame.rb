@@ -11,16 +11,16 @@ class Frame
   end
 
   def score
-    Shot.new(@first_shot).score + Shot.new(@second_shot).score + Shot.new(@third_shot).score
+    @first_shot + @second_shot + @third_shot
   end
 end
 
 class FrameTest < Minitest::Test
   def setup
-    @shot_point = '4'
-    @shot_half = '5'
-    @shot_strike = 'X'
-    @shot_gatter = '0'
+    @shot_point = 4
+    @shot_half = 5
+    @shot_strike = 10
+    @shot_gatter = 0
   end
 
   def test_return_frame_score
