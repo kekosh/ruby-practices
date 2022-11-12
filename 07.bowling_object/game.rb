@@ -21,10 +21,10 @@ class Game
 
   def return_score_list_by_frames
     shots = @game_score.split(',').map { |shot| Shot.new(shot).score }
-    divied_into_frame(shots)
+    divide_into_frame(shots)
   end
 
-  def divied_into_frame(shots)
+  def divide_into_frame(shots)
     temp = []
     frames = []
     shots.each_with_index do |shot, index|
