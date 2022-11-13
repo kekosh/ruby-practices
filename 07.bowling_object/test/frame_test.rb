@@ -13,12 +13,12 @@ class FrameTest < Minitest::Test
 
   def test_return_frame_score
     # nomal frame
-    assert_equal 9, Frame.new(@shot_point, @shot_half).score
+    assert_equal 9, Frame.new(@shot_point, @shot_half).score_by_frame
     # gatter frame
-    assert_equal 4, Frame.new(@shot_point, @shot_gatter).score
+    assert_equal 4, Frame.new(@shot_point, @shot_gatter).score_by_frame
     # strke frame
-    assert_equal 30, Frame.new(@shot_strike, @shot_strike, @shot_strike).score
+    assert_equal 30, Frame.new(@shot_strike, @shot_strike, @shot_strike).score_by_frame
     # spare frame
-    assert_equal 14, Frame.new(@shot_half, @shot_half, @shot_point).score
+    assert_equal 14, Frame.new(@shot_half, @shot_half, @shot_point).score_by_frame
   end
 end

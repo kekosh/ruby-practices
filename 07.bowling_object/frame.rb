@@ -9,7 +9,7 @@ class Frame
     @third_shot = third_shot
   end
 
-  def score
+  def score_by_frame
     @first_shot + @second_shot + @third_shot
   end
 end
