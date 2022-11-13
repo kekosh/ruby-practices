@@ -4,44 +4,41 @@ require_relative './frame'
 require_relative './shot'
 
 class Game
-  def initialize(game_score)
-    @game_score = game_score
+  def initialize(shots)
+    @shots = shots
   end
 
   def score
     total = 0
-    return_score_list_by_frames.each do |frame_score|
-      total += Frame.new(*frame_score).score
+    return_point_list_by_frames.each do |point_list|
+      total += Frame.new(*point_list).score_by_frame
     end
     total
   end
 
   private
 
-  def return_score_list_by_frames
-    shots = @game_score.split(',').map { |shot| Shot.new(shot).score }
-    divide_into_frame(shots)
-  end
+  def return_point_list_by_frames
+    points = @shots.split(',').map { |shot| Shot.new(shot).convert_to_point }
 
-  def divide_into_frame(shots)
     temp = []
-    frames = []
-    shots.each_with_index do |shot, index|
-      break if frames.size == 10
+    point_list_by_frames = []
+    points.each_with_index do |point, index|
+      break if point_list_by_frames.size == 10
 
-      temp.push(shot)
-      if temp.size == 1 && shot == 10
-        temp = [].concat(temp, shots.slice(index + 1, 2))
-        frames.push(temp)
+      temp.push(point)
+      if temp.size == 1 && point == 10
+        temp = [].concat(temp, points.slice(index + 1, 2))
+        point_list_by_frames.push(temp)
         temp = []
       end
 
       next unless temp.size == 2
 
-      temp.push(shots[index + 1]) if temp.sum == 10
-      frames.push(temp)
+      temp.push(points[index + 1]) if temp.sum == 10
+      point_list_by_frames.push(temp)
       temp = []
     end
-    frames
+    point_list_by_frames
   end
 end
