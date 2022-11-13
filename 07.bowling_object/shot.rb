@@ -5,7 +5,7 @@ class Shot
     @shot = shot
   end
 
-  def score
+  def convert_to_point
     @shot == 'X' ? 10 : @shot.to_i
   end
 end

@@ -11,8 +11,8 @@ class ShotTest < Minitest::Test
   end
 
   def test_return_score
-    assert_equal 5, Shot.new(@shot_point).score
-    assert_equal 0, Shot.new(@shot_gatter).score
-    assert_equal 10, Shot.new(@shot_strike).score
+    assert_equal 5, Shot.new(@shot_point).convert_to_point
+    assert_equal 0, Shot.new(@shot_gatter).convert_to_point
+    assert_equal 10, Shot.new(@shot_strike).convert_to_point
   end
 end
