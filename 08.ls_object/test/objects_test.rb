@@ -11,7 +11,7 @@ class ObjectsTest < Minitest::Test
     @option_all_reverse = { all: true, list: false, reverse: true }
 
     @no_option_result = ['information.rb', 'ls.rb', 'objects.rb', 'show.rb', 'test']
-    @option_all_result = ['.', '..', '.gitkeep', 'information.rb', 'ls.rb', 'objects.rb', 'show.rb', 'test']
+    @option_all_result = ['.', '.gitkeep', 'information.rb', 'ls.rb', 'objects.rb', 'show.rb', 'test']
   end
 
   # -aオプション

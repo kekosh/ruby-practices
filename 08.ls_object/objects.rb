@@ -12,9 +12,6 @@ class Objects
                 Dir.glob('*')
               end
 
-    # Ruby3.1から親ディレクトリを表す".."がDir.globで取得されなくなったため対応
-    objects.push('..') if @options[:all]
-
     @options[:reverse] ? objects.sort.reverse : objects.sort
   end
 end
