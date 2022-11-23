@@ -10,8 +10,8 @@ class ObjectsTest < Minitest::Test
     @option_reverse_only = { all: false, list: false, reverse: true }
     @option_all_reverse = { all: true, list: false, reverse: true }
 
-    @no_option_result = ['information.rb', 'ls.rb', 'objects.rb', 'show.rb', 'test']
-    @option_all_result = ['.', '.gitkeep', 'information.rb', 'ls.rb', 'objects.rb', 'show.rb', 'test']
+    @no_option_result = ['for_test', 'test1.rb', 'test2.rb']
+    @option_all_result = ['.', 'for_test', 'test1.rb', 'test2.rb']
   end
 
   # -aオプション
@@ -21,7 +21,7 @@ class ObjectsTest < Minitest::Test
   end
 
   # ディレクトリ内の全オブジェクトを取得する
-  def test_should_return_all_bjects_list
+  def test_should_return_all_objects_list
     assert_equal @option_all_result, Objects.new(@option_all_only).object_list
   end
 
