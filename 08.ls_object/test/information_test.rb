@@ -5,20 +5,22 @@ require_relative '../information'
 
 class InformationTest < Minitest::Test
   def setup
-    @no_option_list = ['for_test', 'test1.rb', 'test2.rb']
-    @option_all_list = ['.', 'for_test', 'test1.rb', 'test2.rb']
+    @no_option_list = ['for_test', 'test1.rb', 'test2.rb', 'test3.txt']
+    @option_all_list = ['.', 'for_test', 'test1.rb', 'test2.rb', 'test3.txt']
 
-    @no_option_result = [16, [
-      'drwxr-xr-x  3 kekosh  staff  96 11 23 20:38 for_test',
-      '-rw-r--r--  1 kekosh  staff  58 11 24 19:11 test1.rb',
-      '-rw-r--r--  1 kekosh  staff  73 11 24 19:13 test2.rb'
-    ]]
-
-    @option_all_result = [16, [
-      'drwxr-xr-x  5 kekosh  staff  160 11 23 20:37 .',
+    @no_option_result = [24, [
       'drwxr-xr-x  3 kekosh  staff   96 11 23 20:38 for_test',
       '-rw-r--r--  1 kekosh  staff   58 11 24 19:11 test1.rb',
-      '-rw-r--r--  1 kekosh  staff   73 11 24 19:13 test2.rb'
+      '-rw-r--r--  1 kekosh  staff   73 11 24 19:13 test2.rb',
+      '-rw-r--r--  1 kekosh  staff  211 11 27 16:57 test3.txt'
+    ]]
+
+    @option_all_result = [24, [
+      'drwxr-xr-x  6 kekosh  staff  192 11 27 16:57 .',
+      'drwxr-xr-x  3 kekosh  staff   96 11 23 20:38 for_test',
+      '-rw-r--r--  1 kekosh  staff   58 11 24 19:11 test1.rb',
+      '-rw-r--r--  1 kekosh  staff   73 11 24 19:13 test2.rb',
+      '-rw-r--r--  1 kekosh  staff  211 11 27 16:57 test3.txt'
     ]]
   end
 
