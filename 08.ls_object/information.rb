@@ -48,7 +48,7 @@ class Information
 
   def take_file_size_max_digit(objects)
     length_list = []
-    objects.each do|object|
+    objects.each do |object|
       length_list.push File::Stat.new(object).size.to_s.length
     end
     length_list.max
