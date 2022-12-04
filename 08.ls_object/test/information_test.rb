@@ -8,9 +8,6 @@ class InformationTest < Minitest::Test
     @option_has_list_is_false = { all: false, list: false, reverse: false }
     @option_has_list_is_true = { all: true, list: true, reverse: false }
 
-    @no_option_list = ['for_test', 'test1.rb', 'test2.rb', 'test3.txt']
-    @option_all_list = ['.', 'for_test', 'test1.rb', 'test2.rb', 'test3.txt']
-
     @no_option_result = [24, [
       'drwxr-xr-x  3 kekosh  staff   96 11 23 20:38 for_test',
       '-rw-r--r--  1 kekosh  staff   58 11 24 19:11 test1.rb',

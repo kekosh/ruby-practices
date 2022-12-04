@@ -29,6 +29,10 @@ class Information
     @options = options
   end
 
+  def return_objects_name
+    Objects.new(@options).object_list
+  end
+
   def return_detail_info_and_permissions
     total_block_size = 0
     objects = Objects.new(@options).object_list
