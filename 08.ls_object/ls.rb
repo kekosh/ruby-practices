@@ -15,14 +15,10 @@ opt.on('-r') { |v| options[:reverse] = v }
 
 opt.parse! { ARGV }
 
-object_list = if options[:list]
-                Information.new(Objects.new(options).object_list).return_detail_info_and_permissions
-              else
-                Objects.new(options).object_list
-              end
+object_list = Objects.new(options).object_list
 
 if options[:list]
-  puts Show.new(object_list).show_object_detail
+  puts Show.new(Information.new(object_list).return_detail_info_and_permissions).show_object_detail
 else
   puts Show.new(object_list).show_object_list
 end

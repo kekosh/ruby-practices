@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'etc'
+require_relative './objects'
 
 class Information
   FILE_TYPE = {
@@ -24,14 +25,15 @@ class Information
     '7' => 'rwx'
   }.freeze
 
-  def initialize(objects)
-    @objects = objects
+  def initialize(options)
+    @options = options
   end
 
   def return_detail_info_and_permissions
     total_block_size = 0
-    file_size_digit = take_file_size_max_digit(@objects)
-    detailed = @objects.map do |object_name|
+    objects = Objects.new(@options).object_list
+    file_size_digit = take_file_size_max_digit(objects)
+    detailed = objects.map do |object_name|
       total_block_size += File.stat(object_name).blocks
       filetype = FILE_TYPE[File.ftype(object_name)]
       stat = File::Stat.new(object_name)

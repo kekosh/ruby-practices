@@ -10,8 +10,8 @@ class ObjectsTest < Minitest::Test
     @option_reverse_only = { all: false, list: false, reverse: true }
     @option_all_reverse = { all: true, list: false, reverse: true }
 
-    @no_option_result = ['for_test', 'test1.rb', 'test2.rb']
-    @option_all_result = ['.', 'for_test', 'test1.rb', 'test2.rb']
+    @no_option_result = ['for_test', 'test1.rb', 'test2.rb', 'test3.txt']
+    @option_all_result = ['.', 'for_test', 'test1.rb', 'test2.rb', 'test3.txt']
   end
 
   # -aオプション

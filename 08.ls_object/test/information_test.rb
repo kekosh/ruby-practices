@@ -5,6 +5,9 @@ require_relative '../information'
 
 class InformationTest < Minitest::Test
   def setup
+    @option_has_list_is_false = { all: false, list: false, reverse: false }
+    @option_has_list_is_true = { all: true, list: true, reverse: false }
+
     @no_option_list = ['for_test', 'test1.rb', 'test2.rb', 'test3.txt']
     @option_all_list = ['.', 'for_test', 'test1.rb', 'test2.rb', 'test3.txt']
 
@@ -25,10 +28,10 @@ class InformationTest < Minitest::Test
   end
 
   def test_should_return_file_detail_and_permission
-    assert_equal @no_option_result, Information.new(@no_option_list).return_detail_info_and_permissions
+    assert_equal @no_option_result, Information.new(@option_has_list_is_false).return_detail_info_and_permissions
   end
 
   def test_should_rerturn_directory_detail_and_permission
-    assert_equal @option_all_result, Information.new(@option_all_list).return_detail_info_and_permissions
+    assert_equal @option_all_result, Information.new(@option_has_list_is_true).return_detail_info_and_permissions
   end
 end
