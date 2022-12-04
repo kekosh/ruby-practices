@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'etc'
+
 class Information
   FILE_TYPE = {
     'file' => '-',
