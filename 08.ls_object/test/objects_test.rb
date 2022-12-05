@@ -35,10 +35,4 @@ class ObjectsTest < Minitest::Test
   def test_should_return_all_objects_list_sorted_decending_by_name
     assert_equal @option_all_result.reverse, Objects.new(@option_all_reverse).object_list
   end
-
-  # [Note]-lオプションによる詳細情報の取得はファイル取得とは別枠なので不要？
-  # -lオプション
-  # 詳細情報とともにオブジェクトとの一覧を出力する。
-  # def test_should_return_objects_list_with_detail_infomation
-  # end
 end
