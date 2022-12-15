@@ -4,7 +4,6 @@ require 'minitest/autorun'
 require_relative '../objects'
 
 class ObjectsTest < Minitest::Test
-
   # -aオプション
   # ディレクトリ内の一般的なファイル、ディレクトリのリストを取得する
   def test_should_return_normal_objects_list
