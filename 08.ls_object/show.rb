@@ -11,7 +11,7 @@ class Show
   end
 
   def object_list
-    @options[:list] ? return_object_detail_info_list : return_object_name_list
+    @options[:long] ? return_object_detail_info_list : return_object_name_list
   end
 
   private
