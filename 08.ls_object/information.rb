@@ -33,7 +33,7 @@ class Information
     total_block_size = 0
     objects = Objects.new(@options).object_list
     file_size_digit = take_file_size_max_digit(objects)
-    detailed = objects.map do |object_name|
+    long_format = objects.map do |object_name|
       total_block_size += File.stat(object_name).blocks
       filetype = FILE_TYPE[File.ftype(object_name)]
       stat = File::Stat.new(object_name)
@@ -45,7 +45,7 @@ class Information
       last_modified = stat.mtime.strftime('%_m %_d %_R')
       "#{filetype}#{permissions} #{hard_links} #{owner_name}  #{group_name}  #{file_size} #{last_modified} #{object_name}"
     end
-    [total_block_size, detailed]
+    [total_block_size, long_format]
   end
 
   private
