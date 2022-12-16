@@ -38,12 +38,12 @@ class Information
       filetype = FILE_TYPE[File.ftype(object_name)]
       stat = File::Stat.new(object_name)
       permissions = format_permissions(stat)
-      hardlinks = stat.nlink.to_s.rjust(2)
+      hard_links = stat.nlink.to_s.rjust(2)
       owner_name = Etc.getpwuid(stat.uid).name
       group_name = Etc.getgrgid(stat.gid).name
       file_size = stat.size.to_s.rjust(file_size_digit)
       last_modified = stat.mtime.strftime('%_m %_d %_R')
-      "#{filetype}#{permissions} #{hardlinks} #{owner_name}  #{group_name}  #{file_size} #{last_modified} #{object_name}"
+      "#{filetype}#{permissions} #{hard_links} #{owner_name}  #{group_name}  #{file_size} #{last_modified} #{object_name}"
     end
     [total_block_size, detailed]
   end
