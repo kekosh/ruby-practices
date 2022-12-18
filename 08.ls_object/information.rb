@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'etc'
-require_relative './objects'
+require_relative './content'
 
 class Information
   FILE_TYPE = {
@@ -29,30 +29,30 @@ class Information
     @options = options
   end
 
-  def return_detail_info_and_permissions
+  def list_contents_in_the_long_format
     total_block_size = 0
-    objects = Objects.new(@options).object_list
-    file_size_digit = take_file_size_max_digit(objects)
-    long_format = objects.map do |object_name|
-      total_block_size += File.stat(object_name).blocks
-      filetype = FILE_TYPE[File.ftype(object_name)]
-      stat = File::Stat.new(object_name)
+    contents = Content.new(@options).find_contents
+    file_size_digit = take_file_size_max_digit(contents)
+    long_format = contents.map do |content|
+      total_block_size += File.stat(content).blocks
+      filetype = FILE_TYPE[File.ftype(content)]
+      stat = File::Stat.new(content)
       permissions = format_permissions(stat)
       hard_links = stat.nlink.to_s.rjust(2)
       owner_name = Etc.getpwuid(stat.uid).name
       group_name = Etc.getgrgid(stat.gid).name
       file_size = stat.size.to_s.rjust(file_size_digit)
       last_modified = stat.mtime.strftime('%_m %_d %_R')
-      "#{filetype}#{permissions} #{hard_links} #{owner_name}  #{group_name}  #{file_size} #{last_modified} #{object_name}"
+      "#{filetype}#{permissions} #{hard_links} #{owner_name}  #{group_name}  #{file_size} #{last_modified} #{content}"
     end
     [total_block_size, long_format]
   end
 
   private
 
-  def take_file_size_max_digit(objects)
+  def take_file_size_max_digit(contents)
     length_list = []
-    objects.each do |object|
+    contents.each do |object|
       length_list.push File::Stat.new(object).size.to_s.length
     end
     length_list.max
