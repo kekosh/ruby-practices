@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require_relative './information'
-require_relative './content'
+require_relative './content_printer'
 
-class Show
+class ContentPrinter
   ITEMS_ON_THE_LINE = 3
 
   def initialize(options)

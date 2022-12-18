@@ -13,4 +13,4 @@ opt.on('-r') { |v| options[:reverse] = v }
 
 opt.parse! { ARGV }
 
-puts Show.new(options).contents_list
+puts ContentPrinter.new(options).contents_list
