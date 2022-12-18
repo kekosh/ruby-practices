@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require_relative './show'
+require_relative './content_printer.rb'
 
 opt = OptionParser.new
 options = { all: false, long: false, reverse: false }
