@@ -41,9 +41,7 @@ class ContentPrinter
     informations = Information.new(@options).list_contents_in_the_long_format
     total_block_size, contents_list = informations
     output_string = "total #{total_block_size}\n"
-    contents_list.each do |content|
-      output_string += "#{content}\n"
-    end
+    output_string << contents_list.join("\n")
     output_string.strip
   end
 end
