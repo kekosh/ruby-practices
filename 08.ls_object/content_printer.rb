@@ -19,18 +19,18 @@ class ContentPrinter
   def contents_name_list
     contents = Content.new(@options).find_contents
     output_rows = (contents.size / ITEMS_ON_THE_LINE.to_f).ceil
-    array_by_row = Array.new(output_rows) { [] }
+    rows = Array.new(output_rows) { [] }
     index = 0
 
     contents.each do |content|
-      array_by_row[index] << content
+      rows[index] << content
       index += 1
       index = 0 if index == output_rows
     end
 
     output_string = ''
     longest_word_length = contents.max_by(&:length).length
-    array_by_row.each do |row|
+    rows.each do |row|
       output_string += row.map { |item| item.ljust(longest_word_length) }.join("\t\t")
       output_string += "\n"
     end
