@@ -18,6 +18,8 @@
 .test
 test*
 
+!/08.ls_object/*
+
 # Used by dotenv library to load environment variables.
 # .env
 
